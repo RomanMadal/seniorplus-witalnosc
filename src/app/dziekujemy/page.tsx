@@ -25,12 +25,12 @@ export default function DziekujemyPage() {
             </svg>
           </div>
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-800 mb-3 sm:mb-4">
-            Dziękujemy za zaufanie!
+            Broszura w drodze! 📧
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-slate-600 max-w-2xl mx-auto">
-            Twoje zgłoszenie zostało przyjęte. <strong className="text-amber-600">Zadzwonimy jeszcze dziś lub jutro.</strong>
+            Sprawdź swoją skrzynkę email – <strong className="text-amber-600">broszura „5 filarów witalności seniora" już tam jest.</strong>
             <br className="hidden sm:block" />
-            <span className="sm:hidden"> </span>Poniżej znajdziesz materiały przygotowane specjalnie dla Ciebie.
+            <span className="sm:hidden"> </span>Poniżej znajdziesz dodatkowe materiały przygotowane specjalnie dla Ciebie.
           </p>
         </div>
 
@@ -158,8 +158,8 @@ export default function DziekujemyPage() {
                 <span className="font-bold text-slate-900 text-sm sm:text-base">3</span>
               </div>
               <div>
-                <h3 className="font-semibold text-white text-base sm:text-lg">Przygotuj pytania</h3>
-                <p className="text-slate-400 text-sm sm:text-base">Podczas rozmowy odpowiemy na wszystkie Twoje wątpliwości. Zero presji!</p>
+                <h3 className="font-semibold text-white text-base sm:text-lg">Masz pytania? Zadzwoń lub napisz</h3>
+                <p className="text-slate-400 text-sm sm:text-base">Chętnie porozmawiamy – bez presji. WhatsApp: 503 354 437</p>
               </div>
             </div>
           </div>

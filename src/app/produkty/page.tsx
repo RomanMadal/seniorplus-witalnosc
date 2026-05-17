@@ -689,13 +689,13 @@ export default function ProduktyPage() {
               Gotowy sprawdzić swój poziom omega-3?
             </h2>
             <p className="text-lg sm:text-xl text-slate-600 mb-8">
-              Zapisz się na bezpłatną konsultację. Opowiemy o kuracji i pomożemy wybrać odpowiedni pakiet.
+              Pobierz broszurę „5 filarów witalności seniora 60+" i dowiedz się więcej o kuracji omega-3.
             </p>
             <Link
               href="/#formularz"
-              className="inline-block bg-gradient-to-r from-amber-400 to-amber-600 text-slate-900 font-bold text-xl py-5 px-10 rounded-2xl shadow-xl hover:shadow-2xl transition-all hover:scale-105"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-400 to-amber-600 text-slate-900 font-bold text-xl py-5 px-10 rounded-2xl shadow-xl hover:shadow-2xl transition-all hover:scale-105"
             >
-              Umów bezpłatną rozmowę
+              📄 Pobierz bezpłatną broszurę
             </Link>
           </FadeIn>
         </div>

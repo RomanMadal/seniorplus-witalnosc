@@ -472,14 +472,14 @@ export default function ProtokolyZdrowiaPage() {
               Gotowy na swój Protokół Zdrowia?
             </h2>
             <p className="text-lg sm:text-xl text-slate-300 mb-8">
-              Zapisz się na bezpłatną konsultację. Pomożemy wybrać protokół dopasowany do Twoich potrzeb.
+              Pobierz broszurę i dowiedz się więcej o Protokołach Zdrowia Seniora.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link
                 href="/#formularz"
                 className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-400 to-amber-600 text-slate-900 font-bold text-xl py-5 px-10 rounded-2xl shadow-xl hover:shadow-2xl transition-all hover:scale-105"
               >
-                Umów bezpłatną rozmowę
+                📄 Pobierz bezpłatną broszurę
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <Link

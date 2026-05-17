@@ -25,8 +25,8 @@ const faqData: FAQItem[] = [
     answer: 'Program Witalność 60+ jest dedykowany osobom po 55. roku życia, które chcą zadbać o swoje zdrowie i witalność. Sprawdzi się również dla opiekunów seniorów, którzy szukają sprawdzonych rozwiązań dla swoich bliskich.',
   },
   {
-    question: 'Jak szybko oddzwonicie?',
-    answer: 'Staramy się dzwonić jeszcze tego samego dnia, najpóźniej w ciągu 24 godzin. Rozmowa trwa ok. 15-20 minut - poznamy Twoje potrzeby i odpowiemy na pytania. Zero presji, zero zobowiązań.',
+    question: 'Kiedy dostanę broszurę?',
+    answer: 'Broszura „5 filarów witalności seniora 60+" przyjdzie na Twój email natychmiast po zapisie. Jeśli podasz telefon, możemy też zadzwonić i omówić Twoje pytania. Zero presji, zero zobowiązań.',
   },
   {
     question: 'Czy mogę wycofać zgodę na kontakt?',

@@ -29,26 +29,26 @@ export default function Home() {
 
             {/* Menu desktop */}
             <div className="hidden md:flex items-center gap-6 lg:gap-8">
-              <a href="#program" className="text-slate-600 hover:text-amber-600 transition-colors text-base lg:text-lg">
+              <a href="#program" className="text-slate-800 hover:text-amber-600 transition-colors text-base lg:text-lg font-medium">
                 O programie
               </a>
-              <a href="/produkty" className="text-slate-600 hover:text-amber-600 transition-colors text-base lg:text-lg">
+              <a href="/produkty" className="text-slate-800 hover:text-amber-600 transition-colors text-base lg:text-lg font-medium">
                 Produkty i cennik
               </a>
-              <a href="/protokoly-zdrowia" className="text-slate-600 hover:text-amber-600 transition-colors text-base lg:text-lg">
-                Protokoły Zdrowia
+              <a href="/protokoly-zdrowia" className="text-slate-800 hover:text-emerald-600 transition-colors text-base lg:text-lg font-medium">
+                🌿 Protokoły Zdrowia
               </a>
-              <a href="#jak-dziala" className="text-slate-600 hover:text-amber-600 transition-colors text-base lg:text-lg">
+              <a href="#jak-dziala" className="text-slate-800 hover:text-amber-600 transition-colors text-base lg:text-lg font-medium">
                 Jak to działa
               </a>
               <a href="#formularz" className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white px-5 lg:px-6 py-2.5 lg:py-3 rounded-xl transition-all text-base lg:text-lg font-semibold shadow-lg shadow-amber-200/50 hover:shadow-amber-300/50">
-                Zapisz się
+                Pobierz broszurę
               </a>
             </div>
 
             {/* Mobile CTA */}
             <a href="#formularz" className="md:hidden bg-gradient-to-r from-amber-500 to-amber-600 text-white px-4 py-2.5 rounded-xl text-sm font-semibold shadow-lg">
-              Zapisz się
+              📄 Broszura
             </a>
           </div>
         </div>
@@ -91,15 +91,18 @@ export default function Home() {
 
                 <p className="text-xl md:text-2xl text-slate-300 mb-8 leading-relaxed">
                   Więcej energii, zdrowe stawy, lepsza pamięć.<br/>
-                  <span className="text-amber-300">Bezpłatna rozmowa z ekspertem - bez zobowiązań.</span>
+                  <span className="text-amber-300">Pobierz bezpłatną broszurę „5 filarów witalności seniora"</span>
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 mb-8">
                   <a
                     href="#formularz"
-                    className="btn-premium text-slate-900 font-bold text-xl py-5 px-10 rounded-2xl text-center shadow-xl"
+                    className="btn-premium text-slate-900 font-bold text-xl py-5 px-10 rounded-2xl text-center shadow-xl inline-flex items-center justify-center gap-3"
                   >
-                    Umów bezpłatną rozmowę
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    Pobierz bezpłatną broszurę
                   </a>
                 </div>
 
@@ -196,6 +199,61 @@ export default function Home() {
                   <p className="text-slate-400 text-xs sm:text-sm">Warszawa • w programie od 6 miesięcy</p>
                 </div>
               </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* ============================================ */}
+      {/* PARTNERZY - Eqology + Klimuszko */}
+      {/* ============================================ */}
+      <section className="py-10 sm:py-14 bg-gradient-to-r from-amber-50 via-white to-emerald-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <FadeIn>
+            <div className="text-center mb-8 sm:mb-10">
+              <p className="text-slate-500 text-lg mb-2">Łączymy najlepsze z dwóch światów:</p>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-800">
+                Norweska nauka <span className="text-amber-500">+</span> Polska tradycja ziołowa
+              </h2>
+            </div>
+
+            <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto mb-8">
+              {/* Eqology */}
+              <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-2 border-amber-200 hover:border-amber-400 transition-colors text-center group">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-amber-100 to-amber-200 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                  <span className="text-3xl sm:text-4xl">🇳🇴</span>
+                </div>
+                <h3 className="font-bold text-slate-800 text-xl sm:text-2xl mb-3">Eqology</h3>
+                <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
+                  Omega-3 najwyższej jakości z norweskiego dorsza arktycznego.
+                  <span className="block mt-2 text-amber-600 font-semibold">Certyfikat MSC • TOTOX 4-6</span>
+                </p>
+              </div>
+
+              {/* Klimuszko */}
+              <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-2 border-emerald-200 hover:border-emerald-400 transition-colors text-center group">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                  <span className="text-3xl sm:text-4xl">🌿</span>
+                </div>
+                <h3 className="font-bold text-slate-800 text-xl sm:text-2xl mb-3">Zioła Ojca Klimuszko</h3>
+                <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
+                  40 lat polskiej tradycji ziołowej. Sprawdzone receptury stosowane od 1986 roku.
+                  <span className="block mt-2 text-emerald-600 font-semibold">Partner: Klimuszko.pl</span>
+                </p>
+              </div>
+            </div>
+
+            <div className="text-center">
+              <a
+                href="/protokoly-zdrowia"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-semibold text-lg px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all"
+              >
+                🌿 Zobacz Protokoły Zdrowia Seniora
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+              <p className="text-slate-500 text-sm mt-3">Połączenie omega-3 z ziołami dla maksymalnych efektów</p>
             </div>
           </FadeIn>
         </div>
@@ -508,9 +566,9 @@ export default function Home() {
       <div className="fixed bottom-0 left-0 right-0 md:hidden bg-white/95 backdrop-blur-md border-t border-slate-200 p-4 z-50 shadow-2xl shadow-slate-900/20">
         <a
           href="#formularz"
-          className="btn-premium w-full text-slate-900 font-bold text-lg py-4 px-6 rounded-xl text-center block"
+          className="btn-premium w-full text-slate-900 font-bold text-lg py-4 px-6 rounded-xl text-center flex items-center justify-center gap-2"
         >
-          Umów bezpłatną rozmowę
+          📄 Pobierz bezpłatną broszurę
         </a>
       </div>
 

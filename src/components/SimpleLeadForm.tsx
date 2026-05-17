@@ -1,4 +1,4 @@
-// Formularz lead - rozbudowany z segmentacją
+// Formularz lead magnet - email za broszurę
 // Navy + Gold kolorystyka
 
 'use client'
@@ -17,10 +17,11 @@ export default function SimpleLeadForm({ zrodlo = 'landing' }: SimpleLeadFormPro
 
   const [formData, setFormData] = useState({
     imie: '',
+    email: '',
     telefon: '',
     wiek: '',
     problem: '',
-    zgoda_kontakt: false,
+    zgoda_newsletter: false,
     zgoda_przetwarzanie: false,
   })
 
@@ -41,14 +42,14 @@ export default function SimpleLeadForm({ zrodlo = 'landing' }: SimpleLeadFormPro
     e.preventDefault()
 
     // Walidacja zgód
-    if (!formData.zgoda_kontakt || !formData.zgoda_przetwarzanie) {
+    if (!formData.zgoda_newsletter || !formData.zgoda_przetwarzanie) {
       setError('Prosimy o zaznaczenie wymaganych zgód.')
       return
     }
 
-    // Walidacja telefonu (prosty check)
-    if (formData.telefon.length < 9) {
-      setError('Podaj prawidłowy numer telefonu.')
+    // Walidacja email
+    if (!formData.email.includes('@')) {
+      setError('Podaj prawidłowy adres email.')
       return
     }
 
@@ -62,12 +63,14 @@ export default function SimpleLeadForm({ zrodlo = 'landing' }: SimpleLeadFormPro
         .insert([
           {
             imie: formData.imie,
-            telefon: formData.telefon,
+            email: formData.email,
+            telefon: formData.telefon || null,
             wiek: formData.wiek || null,
             problem_glowny: formData.problem || null,
             zrodlo: zrodlo,
             status: 'new',
-            lead_score: formData.problem ? 15 : 10, // Wyższy score jeśli podał problem
+            lead_type: 'broszura',
+            lead_score: formData.problem ? 15 : 10,
           }
         ])
         .select('id')
@@ -79,7 +82,7 @@ export default function SimpleLeadForm({ zrodlo = 'landing' }: SimpleLeadFormPro
       const consents = [
         {
           lead_id: leadData.id,
-          consent_type: 'kontakt_tel',
+          consent_type: 'newsletter',
           consent_given: true,
           consent_version: 'v1.0_2026-05',
         },
@@ -93,14 +96,14 @@ export default function SimpleLeadForm({ zrodlo = 'landing' }: SimpleLeadFormPro
 
       await supabase.from('seniorplus_consents').insert(consents)
 
-      // Utwórz follow-up - szybszy (24h zamiast 7 dni)
+      // Utwórz follow-up email - po 2 dniach
       const followUpDate = new Date()
-      followUpDate.setDate(followUpDate.getDate() + 1)
+      followUpDate.setDate(followUpDate.getDate() + 2)
 
       await supabase.from('seniorplus_follow_ups').insert([
         {
           lead_id: leadData.id,
-          follow_up_type: '24h',
+          follow_up_type: 'email_2d',
           scheduled_date: followUpDate.toISOString().split('T')[0],
         }
       ])
@@ -110,7 +113,7 @@ export default function SimpleLeadForm({ zrodlo = 'landing' }: SimpleLeadFormPro
 
     } catch (err) {
       console.error('Błąd zapisu:', err)
-      setError('Wystąpił błąd. Spróbuj ponownie lub zadzwoń do nas.')
+      setError('Wystąpił błąd. Spróbuj ponownie.')
     } finally {
       setIsSubmitting(false)
     }
@@ -124,12 +127,19 @@ export default function SimpleLeadForm({ zrodlo = 'landing' }: SimpleLeadFormPro
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <h3 className="text-xl sm:text-2xl font-bold text-slate-800 mb-2 text-center">
-        Umów bezpłatną rozmowę
-      </h3>
-      <p className="text-slate-500 text-center mb-6 sm:mb-8 text-sm sm:text-base">
-        Zadzwonimy jeszcze dziś lub w ciągu 24h
-      </p>
+      <div className="text-center mb-6 sm:mb-8">
+        <div className="inline-flex items-center justify-center w-16 h-16 bg-amber-100 rounded-full mb-4">
+          <svg className="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+        </div>
+        <h3 className="text-xl sm:text-2xl font-bold text-slate-800 mb-2">
+          Pobierz bezpłatną broszurę
+        </h3>
+        <p className="text-slate-500 text-sm sm:text-base">
+          „5 filarów witalności seniora 60+" – wyślemy od razu na email
+        </p>
+      </div>
 
       {/* Imię */}
       <div className="mb-4 sm:mb-5">
@@ -148,16 +158,32 @@ export default function SimpleLeadForm({ zrodlo = 'landing' }: SimpleLeadFormPro
         />
       </div>
 
-      {/* Telefon */}
+      {/* Email */}
+      <div className="mb-4 sm:mb-5">
+        <label htmlFor="email" className="block text-sm sm:text-base font-semibold text-slate-700 mb-1.5 sm:mb-2">
+          Email *
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-4 sm:px-5 py-3 sm:py-4 text-base sm:text-lg border-2 border-slate-200 rounded-xl sm:rounded-2xl focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all"
+          placeholder="Twój adres email"
+        />
+      </div>
+
+      {/* Telefon - opcjonalny */}
       <div className="mb-4 sm:mb-5">
         <label htmlFor="telefon" className="block text-sm sm:text-base font-semibold text-slate-700 mb-1.5 sm:mb-2">
-          Telefon *
+          Telefon <span className="text-slate-400 font-normal">(opcjonalnie – jeśli chcesz rozmowę)</span>
         </label>
         <input
           type="tel"
           id="telefon"
           name="telefon"
-          required
           value={formData.telefon}
           onChange={handleChange}
           className="w-full px-4 sm:px-5 py-3 sm:py-4 text-base sm:text-lg border-2 border-slate-200 rounded-xl sm:rounded-2xl focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all"
@@ -165,31 +191,10 @@ export default function SimpleLeadForm({ zrodlo = 'landing' }: SimpleLeadFormPro
         />
       </div>
 
-      {/* Wiek - dropdown */}
-      <div className="mb-4 sm:mb-5">
-        <label htmlFor="wiek" className="block text-sm sm:text-base font-semibold text-slate-700 mb-1.5 sm:mb-2">
-          Wiek (opcjonalnie)
-        </label>
-        <select
-          id="wiek"
-          name="wiek"
-          value={formData.wiek}
-          onChange={handleChange}
-          className="w-full px-4 sm:px-5 py-3 sm:py-4 text-base sm:text-lg border-2 border-slate-200 rounded-xl sm:rounded-2xl focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all bg-white"
-        >
-          <option value="">Wybierz przedział wiekowy</option>
-          <option value="55-60">55-60 lat</option>
-          <option value="60-65">60-65 lat</option>
-          <option value="65-70">65-70 lat</option>
-          <option value="70-75">70-75 lat</option>
-          <option value="75+">75+ lat</option>
-        </select>
-      </div>
-
-      {/* Główny problem - dropdown */}
-      <div className="mb-5 sm:mb-6">
+      {/* Główny problem - dropdown (na mobile ukryty dla uproszczenia) */}
+      <div className="hidden sm:block mb-5 sm:mb-6">
         <label htmlFor="problem" className="block text-sm sm:text-base font-semibold text-slate-700 mb-1.5 sm:mb-2">
-          Co najbardziej Ci doskwiera? (opcjonalnie)
+          Co najbardziej Ci doskwiera? <span className="text-slate-400 font-normal">(opcjonalnie)</span>
         </label>
         <select
           id="problem"
@@ -212,13 +217,13 @@ export default function SimpleLeadForm({ zrodlo = 'landing' }: SimpleLeadFormPro
         <label className="flex items-start gap-4 cursor-pointer group">
           <input
             type="checkbox"
-            name="zgoda_kontakt"
-            checked={formData.zgoda_kontakt}
+            name="zgoda_newsletter"
+            checked={formData.zgoda_newsletter}
             onChange={handleChange}
             className="mt-1 w-6 h-6 text-amber-500 rounded-lg border-slate-300 focus:ring-amber-500 cursor-pointer flex-shrink-0 accent-amber-500"
           />
           <span className="text-base text-slate-600 group-hover:text-slate-800 transition-colors leading-relaxed">
-            Wyrażam zgodę na kontakt telefoniczny w celu omówienia programu Witalność 60+ <span className="text-red-500">*</span>
+            Wyrażam zgodę na otrzymanie broszury i newslettera edukacyjnego <span className="text-red-500">*</span>
           </span>
         </label>
 
@@ -254,7 +259,7 @@ export default function SimpleLeadForm({ zrodlo = 'landing' }: SimpleLeadFormPro
         disabled={isSubmitting}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
-        className="w-full btn-premium disabled:opacity-50 disabled:cursor-not-allowed text-slate-900 font-bold text-xl py-5 px-8 rounded-2xl shadow-lg"
+        className="w-full btn-premium disabled:opacity-50 disabled:cursor-not-allowed text-slate-900 font-bold text-xl py-5 px-8 rounded-2xl shadow-lg flex items-center justify-center gap-3"
       >
         {isSubmitting ? (
           <span className="flex items-center justify-center gap-3">
@@ -265,13 +270,18 @@ export default function SimpleLeadForm({ zrodlo = 'landing' }: SimpleLeadFormPro
             Wysyłanie...
           </span>
         ) : (
-          'Tak, zadzwońcie do mnie'
+          <>
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            Wyślij mi broszurę
+          </>
         )}
       </motion.button>
 
       {/* Informacja */}
       <p className="mt-6 text-sm text-slate-500 text-center leading-relaxed">
-        Twoje dane są bezpieczne i chronione zgodnie z RODO
+        📧 Broszura przyjdzie od razu • Możesz zrezygnować w każdej chwili
       </p>
     </motion.form>
   )
