@@ -1,65 +1,52 @@
-// Layout główny aplikacji SeniorPlus Witalność 60+
-// Z płynnym scrollowaniem Lenis + profesjonalne fonty
+import type { Metadata } from 'next'
+import { Inter, Fraunces } from 'next/font/google'
+import './globals.css'
 
-import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
-import "./globals.css";
-import SmoothScroll from "@/components/SmoothScroll";
-
-// Font dla body - czytelny, nowoczesny
 const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin", "latin-ext"],
-  display: "swap",
-});
+  variable: '--font-inter',
+  subsets: ['latin', 'latin-ext'],
+  display: 'swap',
+})
 
-// Font dla nagłówków - elegancki, budujący zaufanie
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin", "latin-ext"],
-  display: "swap",
-});
+const fraunces = Fraunces({
+  variable: '--font-fraunces',
+  subsets: ['latin', 'latin-ext'],
+  display: 'swap',
+  axes: ['SOFT', 'opsz'],
+})
 
 export const metadata: Metadata = {
-  title: "Witalność 60+ | Premium Wellness Program",
-  description: "Dołącz do programu Witalność 60+ i odzyskaj energię. Bezpłatna konsultacja, sprawdzone rozwiązania omega-3, wsparcie eksperta. Premium Wellness Program dla osób 60+.",
-  keywords: "witalność 60+, omega-3, zdrowie seniorów, premium wellness, energia, suplementy premium, Eqology",
-  authors: [{ name: "Roman Madaliński" }],
+  metadataBase: new URL('https://seniorpluswitalnosc.pl'),
+  title: 'Witalność 60+ | Program zdrowia Fundacji SeniorPlus',
+  description:
+    'Bezpłatna konsultacja telefoniczna w programie Witalność 60+. Energia, zdrowe stawy, lepsza pamięć dla osób po sześćdziesiątce. Bez nacisków, bez zobowiązań.',
+  keywords:
+    'program zdrowia seniorów, omega-3 dla seniorów, witalność 60+, Fundacja SeniorPlus, Eqology, suplementy dla seniorów',
+  authors: [{ name: 'Roman Madaliński' }],
   icons: {
-    icon: [
-      { url: '/favicon.ico', sizes: 'any' },
-    ],
+    icon: [{ url: '/favicon.ico', sizes: 'any' }],
     apple: '/apple-icon.png',
   },
   openGraph: {
-    title: "Witalność 60+ | Premium Wellness Program",
-    description: "Odzyskaj energię i witalność po 60-tce. Bezpłatna konsultacja i sprawdzone rozwiązania omega-3.",
-    type: "website",
-    locale: "pl_PL",
-    siteName: "Witalność 60+",
+    title: 'Witalność 60+ | Program zdrowia Fundacji SeniorPlus',
+    description: 'Bezpłatna konsultacja telefoniczna. Energia, zdrowe stawy, lepsza pamięć po sześćdziesiątce.',
+    type: 'website',
+    locale: 'pl_PL',
+    siteName: 'Witalność 60+',
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Witalność 60+ | Premium Wellness Program",
-    description: "Odzyskaj energię i witalność po 60-tce.",
+    card: 'summary_large_image',
+    title: 'Witalność 60+ | Program zdrowia',
+    description: 'Bezpłatna konsultacja telefoniczna. Energia, zdrowe stawy, lepsza pamięć po sześćdziesiątce.',
   },
-};
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="pl"
-      className={`${inter.variable} ${playfair.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col font-sans">
-        <SmoothScroll>
-          {children}
-        </SmoothScroll>
-      </body>
+    <html lang="pl" className={`${inter.variable} ${fraunces.variable} antialiased`}>
+      <body>{children}</body>
     </html>
-  );
+  )
 }
