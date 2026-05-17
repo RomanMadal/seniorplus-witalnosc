@@ -208,10 +208,11 @@ ALTER TABLE seniorplus_leads
 
 ## Linki referencyjne
 
-- Workspace context: `../../.shared/context/COMPANY.md`, `.shared/context/STACK.md`
-- Premium animated site rules (NIE stosujemy tutaj, ale czytamy): `../../.shared/docs/PREMIUM_ANIMATED_WEBSITE.md`
-- Przykład cinematic site (przeciwwaga, NIE template dla nas): `../strony-firm/luned-detailing-demo/`
-- Senior UX research: Nielsen Norman Group „Designing for Older Adults", W3C WAI-AGE, GOV.UK service manual
+- **`docs/ai-partners-standards/`** — baseline standardy AI Partners (STACK, SECURITY, CONTENT_STYLE, TECH_STANDARDS). Czytaj te dokumenty kiedy planujesz większe zmiany — szczególnie SECURITY.md przed dotknięciem Supabase / auth.
+- Senior UX research: Nielsen Norman Group „Designing for Older Adults", W3C WAI-AGE, GOV.UK service manual, AARP redesign 2024
+- Editorial design inspiration: Athletic Greens, Vitabiotics, Eqology.com, Augustinus Bader (premium wellness 2026)
+
+**Hierarchia gdy standardy się rozjeżdżają z tym CLAUDE.md** — ten plik wygrywa. Standardy z `docs/ai-partners-standards/` to baseline (np. „możesz używać Three.js dla premium site"). Ten CLAUDE.md to specyfika senior audience (np. „Three.js WYŁĄCZONE — overkill, lag na słabszych urządzeniach, rozprasza"). Lokalna decyzja wygrywa z baseline.
 
 ## Setup po `git pull`
 
