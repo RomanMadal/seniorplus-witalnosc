@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Tarcza/badge -->
+  <path d="M50 5 L90 25 L90 55 Q90 85 50 95 Q10 85 10 55 L10 25 Z" fill="#059669" stroke="#047857" stroke-width="2"/>
+  <!-- Wewnętrzna tarcza -->
+  <path d="M50 12 L82 28 L82 53 Q82 78 50 87 Q18 78 18 53 L18 28 Z" fill="#10B981"/>
+  <!-- Checkmark -->
+  <path d="M35 50 L45 62 L70 35" stroke="white" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Tekst EFSA -->
+  <text x="50" y="82" font-family="Arial" font-size="10" fill="white" text-anchor="middle" font-weight="bold">EFSA</text>
+  <!-- Gwiazdki UE -->
+  <circle cx="30" cy="20" r="2" fill="#FDE68A"/>
+  <circle cx="50" cy="15" r="2" fill="#FDE68A"/>
+  <circle cx="70" cy="20" r="2" fill="#FDE68A"/>
+</svg>

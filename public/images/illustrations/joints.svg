@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <!-- Tło koło -->
+  <circle cx="60" cy="60" r="55" fill="#FEE2E2" stroke="#EF4444" stroke-width="2"/>
+  <!-- Kolano - anatomiczny zarys -->
+  <ellipse cx="60" cy="55" rx="25" ry="35" fill="#FCA5A5" stroke="#EF4444" stroke-width="2"/>
+  <!-- Kość górna (udo) -->
+  <rect x="52" y="15" width="16" height="35" rx="8" fill="#FECACA" stroke="#DC2626" stroke-width="2"/>
+  <!-- Kość dolna (piszczel) -->
+  <rect x="52" y="70" width="16" height="35" rx="8" fill="#FECACA" stroke="#DC2626" stroke-width="2"/>
+  <!-- Staw kolanowy -->
+  <ellipse cx="60" cy="55" rx="12" ry="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <!-- Znaki bólu -->
+  <path d="M25 45 L35 50 L25 55" stroke="#DC2626" stroke-width="2" fill="none"/>
+  <path d="M95 45 L85 50 L95 55" stroke="#DC2626" stroke-width="2" fill="none"/>
+  <!-- Gwiazdki bólu -->
+  <text x="20" y="35" font-family="Arial" font-size="16" fill="#DC2626">*</text>
+  <text x="92" y="35" font-family="Arial" font-size="16" fill="#DC2626">*</text>
+  <text x="20" y="75" font-family="Arial" font-size="16" fill="#DC2626">*</text>
+  <text x="92" y="75" font-family="Arial" font-size="16" fill="#DC2626">*</text>
+</svg>
